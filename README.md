@@ -1,19 +1,20 @@
 # ethereum avax module 3
 # create my own Token in solidity and connect it with Local Hardhat
-This repository is made for my ethereum avax module 3 project which is used to create MY TOKEN using contracts and connect by using local hardhat.
+This repository is made for my ethereum avax module 3 project which is used to create my own token using contracts and connect by using local hardhat.
 
 ## Problem Statement
 For this project we will write a contract to create our own token on a local hardhat network. once we have our contract we will be able to burnt , mint and tranfer the tokens. 
 
 
-## Description
-This program  written in Solidity by using a simple contract, solidity is  a programming language used for developing smart contracts on the Ethereum blockchain.
-This contract with name MyToken has 3 public access variable that contain (Token Name,Token Abbreviation and Total supply).
-Then in the next step  we mapped address into balances.
-Then we use a Function with name Mint that increase the total supply and  increases the balance of the (sender) address by that amount.
-Then we use  burn function to burn the balance and subtract the burn amount from total_supply and balances of the address provided.
-Here,  we  have to provided a if statement to check balance is greater than the value to be burnt, if balance is less than value than the further code will not execute.
-Then we will compile this contract and then deploy this contract then connet it to local hardhat network.
+## Description:
+
+1) For the first step we will create a contract with public variable that stores the details of the coins, it has 3 public access variable that contain (Token Name,Token Abbreviation and Total supply).
+2) The Token Name,Token Abbreviation will be string type and the total supply witll be unsigned integer type.
+3) Now for the second step we will create a mapping of address to balances and make it public type, the working of the mpping is - if we pss an address it will return a token amount that the address has i.e. their balance.
+4) Next we wil create a mint fuction with parameters address and value, Now we will increase the total supply by the amount provided using += operator.
+5) Lastly we will create aburn function whose working is the total opposite of the mint function i.e. it will detroy the tokens.
+6) It will take address and value and deduct the value from the totalsuplly and the balance of the address.
+      We should ensure that our burn function has a conditional statement ti ensure that the balnce of the account is greater than or equal to the amount that is supposed to be burned.
 
 
 
@@ -36,7 +37,7 @@ Once the contract is deployed, you can interact with it by passing the address. 
 
 ## Author
 
-Sulochana
+SHRESHTHA PAL
 
 ## License
 

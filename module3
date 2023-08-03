@@ -10,6 +10,7 @@ contract MODULE3 {
     uint public totalSupply = 0;
     
     mapping (address=> uint) public balances;
+    address public owner;
 
     event Transfer(address indexed from, address indexed to, uint value);
     event Burn(address indexed burner, uint value);

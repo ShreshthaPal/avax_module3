@@ -11,6 +11,9 @@ contract MODULE3 {
     
     mapping (address=> uint) public balances;
 
+    event Transfer(address indexed from, address indexed to, uint value);
+    event Burn(address indexed burner, uint value);
+
     function mint(address _address, uint _value) public 
     {
         totalSupply += _value;
@@ -26,6 +29,15 @@ contract MODULE3 {
             balances[_address] -= _value;
         }
         
+    }
+     // Transfer function
+    function transfer(address _to, uint _value) public {
+        require(_to != address(0), "Invalid address");
+        require(balances[msg.sender] >= _value, " your token is insufficient ");
+        
+        balances[msg.sender] = balances[msg.sender] - _value;
+        balances[_to] = balances[_to] + _value;
+        emit Transfer(msg.sender, _to, _value);
     }
 
 }

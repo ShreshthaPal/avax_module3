@@ -33,7 +33,7 @@ contract MODULE3 {
      // Transfer function
     function transfer(address _to, uint _value) public {
         require(_to != address(0), "Invalid address");
-        require(balances[msg.sender] >= _value, " your token is insufficient ");
+        require(balances[msg.sender] >= _value, "Insufficient balance");
         
         balances[msg.sender] = balances[msg.sender] - _value;
         balances[_to] = balances[_to] + _value;

@@ -1,44 +1,43 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.0;
 
-
-
-contract MODULE3 {
-
+contract MyToken {
     string public tokenName = "SHRESHTHA";
-    string public abbrv = "PAL";
-    uint public totalSupply = 0;
-    
-    mapping (address=> uint) public balances;
+    string public tokenAbbrv = "PAL";
+    uint256 public totalSupply = 0;
+
+    mapping(address => uint256) public balances;
     address public owner;
 
-    event Transfer(address indexed from, address indexed to, uint value);
-    event Burn(address indexed burner, uint value);
+    event Transfer(address indexed from, address indexed to, uint256 value);
 
-    function mint(address _address, uint _value) public 
-    {
+    constructor() {
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only the owner can call this function.");
+        _;
+    }
+
+    function mint(address _address, uint256 _value) public onlyOwner {
         totalSupply += _value;
-        balances[_address] += _value;  
-
+        balances[_address] += _value;
     }
 
-    function burn( address _address,uint _value) public 
-    {
-        if( balances[_address] >= _value)
-        {
-            totalSupply -= _value;
-            balances[_address] -= _value;
-        }
-        
+    function burn(uint256 _value) public {
+        require(balances[msg.sender] >= _value, "Insufficient balance.");
+        totalSupply -= _value;
+        balances[msg.sender] -= _value;
     }
-     // Transfer function
-    function transfer(address _to, uint _value) public {
-        require(_to != address(0), "Invalid address");
-        require(balances[msg.sender] >= _value, "Insufficient balance");
-        
-        balances[msg.sender] = balances[msg.sender] - _value;
-        balances[_to] = balances[_to] + _value;
+
+    function transfer(address _to, uint256 _value) public {
+        require(_to != address(0), "Invalid address.");
+        require(balances[msg.sender] >= _value, "Insufficient balance.");
+
+        balances[msg.sender] -= _value;
+        balances[_to] += _value;
+
         emit Transfer(msg.sender, _to, _value);
     }
-
 }

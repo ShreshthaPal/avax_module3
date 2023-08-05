@@ -11,8 +11,9 @@ For this project we will write a contract to create our own token on a local har
 1) For the first step we will create a contract with public variable that stores the details of the coins, it has 3 public access variable that contain (Token Name,Token Abbreviation and Total supply).
 2) The Token Name,Token Abbreviation will be string type and the total supply witll be unsigned integer type.
 3) Now for the second step we will create a mapping of address to balances and make it public type, the working of the mpping is - if we pss an address it will return a token amount that the address has i.e. their balance.
-4) Next we wil create a mint fuction with parameters address and value, Now we will increase the total supply by the amount provided using += operator.
-5) now we will create a burn function whose working is the total opposite of the mint function i.e. it will detroy the tokens.
+4) We have added modifier that restrict acess to certain function only to the contract owner. It uses the require statement5 to check if the caller is the owner.
+5) Next we wil create a mint fuction with parameters address and value, Now we will increase the total supply by the amount provided using += operator.
+6) now we will create a burn function whose working is the total opposite of the mint function i.e. it will detroy the tokens.
 7) It will take address and value and deduct the value from the totalsuplly and the balance of the address.
       We should ensure that our burn function has a conditional statement ti ensure that the balnce of the account is greater than or equal to the amount that is supposed to be burned.
 8) lastly create a transfer function to transfer the token to any address, here we have used our metamask address to tansfer tokens from our remix id to metamask addess.
